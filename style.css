@@ -1,284 +1,229 @@
-/* The app's own colours: a dreamy night sky (app/lib/theme/kipumi_theme.dart). */
+/* The app's own colours: a dreamy night sky (app/lib/theme/kipumi_theme.dart).
+   Sized for a phone first: most people arrive from the App Store. */
 :root {
   --night-deep: #07062a;
   --night: #0b0830;
-  --indigo: #1a1642;
-  --indigo-high: #2a235e;
   --lilac: #a78bfa;
   --lavender: #cfc4f2;
   --gold: #ffd778;
-  --pink: #ff8edb;
   --mist: #edebff;
-  --muted: #9c93d9;
+  --muted: #a49cd6;
   --hairline: rgba(201, 184, 255, 0.14);
 }
 
 * { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; background: #07062a; }
+html {
+  -webkit-text-size-adjust: 100%;
+  background: var(--night-deep);
+}
 
 body {
   margin: 0;
   min-height: 100vh;
   color: var(--mist);
-  background: linear-gradient(180deg, var(--night-deep) 0%, var(--night) 35%, #17124a 75%, #1e1758 100%) fixed;
-  font: 16px/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  overflow-x: hidden;
+  background: linear-gradient(180deg, var(--night-deep) 0%, var(--night) 40%, #17124a 100%) fixed;
+  font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* The sky: stars drawn by sky.js, a moon, banks of cloud. */
 #stars {
   position: fixed;
   inset: 0;
   width: 100%;
   height: 100%;
-  z-index: 0;
   pointer-events: none;
-}
-
-.moon {
-  position: absolute;
-  top: 92px;
-  left: max(16px, calc(50% - 330px));
-  width: 64px;
-  height: 64px;
-  z-index: 1;
-  filter: drop-shadow(0 0 22px rgba(255, 215, 120, 0.45));
 }
 
 main {
   position: relative;
-  z-index: 2;
-  max-width: 720px;
+  max-width: 640px;
   margin: 0 auto;
-  padding: 0 16px 72px;
+  padding: 0 16px 40px;
 }
 
-/* Top bar: the app's icon and name. */
+/* Top bar */
 .top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 0;
+  height: 60px;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   color: var(--mist);
   text-decoration: none;
   font-weight: 700;
-  font-size: 1.15rem;
-  letter-spacing: -0.01em;
+  font-size: 17px;
 }
 
-.brand img {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  box-shadow: 0 0 0 1px var(--hairline), 0 6px 18px rgba(0, 0, 0, 0.35);
-}
+.brand img { width: 30px; height: 30px; border-radius: 8px; }
 
-.lang {
-  display: flex;
-  gap: 6px;
-}
+.lang { display: flex; gap: 6px; }
 
 .lang a {
-  color: var(--lavender);
+  color: var(--muted);
   text-decoration: none;
-  font-size: 0.9rem;
-  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 11px;
   border-radius: 999px;
   border: 1px solid var(--hairline);
-  background: rgba(26, 22, 66, 0.6);
 }
 
-.lang a:hover { border-color: var(--lilac); }
+.lang a.on {
+  color: var(--night-deep);
+  background: var(--gold);
+  border-color: var(--gold);
+}
 
-/* The hero: Kipumi on its clouds. */
+/* Hero: words on the left, Kipumi on its cloud on the right, the moon
+   above, as the app's cards are laid out. */
 .hero {
   position: relative;
-  text-align: center;
-  padding: 8px 0 0;
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  margin: 4px 0 14px;
+  padding: 20px 18px 0;
+  border-radius: 22px;
+  border: 1px solid var(--hairline);
+  background: linear-gradient(135deg, #262058 0%, #181440 100%);
+  overflow: hidden;
+  min-height: 150px;
 }
+
+.hero .words { flex: 1; padding-bottom: 20px; position: relative; z-index: 2; }
+
+.hero h1 {
+  font-size: 26px;
+  line-height: 1.15;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 6px;
+}
+
+.hero p { margin: 0; color: var(--lavender); font-size: 14px; }
+.hero .updated { color: var(--muted); font-size: 13px; margin-top: 4px; white-space: nowrap; }
 
 .hero .pet {
   position: relative;
   z-index: 2;
-  width: min(300px, 72vw);
+  width: 132px;
   height: auto;
+  flex: none;
   display: block;
-  margin: 0 auto -18px;
-  animation: breathe 3.6s ease-in-out infinite;
-  transform-origin: 50% 100%;
 }
 
-.hero .peek {
-  width: min(220px, 56vw);
-  margin-bottom: -6px;
-}
-
-@keyframes breathe {
-  0%, 100% { transform: scaleY(1); }
-  50% { transform: scaleY(1.02); }
-}
-
-.clouds {
-  position: relative;
+.hero .clouds {
+  position: absolute;
+  right: -10px;
+  bottom: -6px;
+  width: 210px;
+  height: 52px;
   z-index: 1;
-  display: block;
-  width: 100%;
-  height: 90px;
-  margin-top: -40px;
 }
 
-h1 {
-  font-size: clamp(2rem, 7vw, 2.75rem);
-  line-height: 1.1;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  margin: 18px 0 6px;
-  text-shadow: 0 0 24px rgba(167, 139, 250, 0.55);
+.hero .moon {
+  position: absolute;
+  top: 12px;
+  right: 150px;
+  width: 26px;
+  height: 26px;
+  z-index: 1;
+  filter: drop-shadow(0 0 10px rgba(255, 215, 120, 0.5));
 }
 
-.tagline {
-  color: var(--lilac);
-  font-size: 1.1rem;
-  margin: 0 0 6px;
-}
-
-.updated { color: var(--muted); font-size: 0.9rem; margin: 0; }
-
-/* Cards, as the app draws them. */
+/* Cards */
 .card {
-  position: relative;
-  overflow: hidden;
   background: linear-gradient(135deg, #262058 0%, #181440 100%);
   border: 1px solid var(--hairline);
-  border-radius: 22px;
-  padding: 18px 20px;
-  margin: 14px 0;
+  border-radius: 18px;
+  padding: 14px 16px;
+  margin: 10px 0;
 }
 
 .card.gold {
   background: linear-gradient(135deg, #2b2260 0%, #1b1546 60%, #2a1c4e 100%);
   border: 1.5px solid rgba(255, 215, 120, 0.6);
-  box-shadow: 0 0 18px rgba(255, 215, 120, 0.14);
 }
 
-.card.with-art { padding-right: 140px; min-height: 120px; }
+.card p { margin: 0 0 8px; }
+.card p:last-child, .card ul:last-child { margin-bottom: 0; }
+.card h3 { margin: 12px 0 4px; }
+.card h3:first-child { margin-top: 0; }
 
-.card .art {
-  position: absolute;
-  right: 10px;
-  bottom: 0;
-  width: 124px;
-  height: auto;
-  pointer-events: none;
-}
-
-.card p:first-child { margin-top: 0; }
-.card p:last-child { margin-bottom: 0; }
+/* A card with a little picture beside its words. */
+.card.with-art { display: flex; align-items: center; gap: 12px; }
+.card.with-art .text { flex: 1; }
+.card.with-art .art { width: 76px; height: auto; flex: none; }
 
 /* A row like the app's: an icon tile, a title and a line. */
-.row {
-  display: flex;
-  gap: 14px;
-  align-items: flex-start;
-}
+.row { display: flex; gap: 12px; align-items: flex-start; }
 
 .tile {
   flex: none;
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
   display: grid;
   place-items: center;
   background: linear-gradient(135deg, #3a3186 0%, #2a235e 100%);
   border: 1px solid var(--hairline);
-  font-size: 20px;
+  font-size: 17px;
 }
 
-.row h3 { margin: 0 0 2px; color: var(--mist); font-size: 1.02rem; font-weight: 600; }
-.row p { margin: 0; }
+.row h3 { margin: 0 0 2px; color: var(--mist); font-size: 15px; font-weight: 600; }
+.row p { margin: 0; font-size: 14px; }
 
 .section-title {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin: 34px 0 6px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 22px 4px 4px;
 }
 
-.section-title .spark { color: var(--gold); font-size: 1.1rem; }
-
-h2 { font-size: 1.2rem; margin: 30px 0 8px; font-weight: 600; }
-h3 { font-size: 1.02rem; margin: 18px 0 4px; color: var(--lavender); font-weight: 600; }
-
+h3 { font-size: 15px; color: var(--lavender); font-weight: 600; }
 p, li { color: var(--muted); }
 strong { color: var(--mist); font-weight: 600; }
 a { color: var(--lilac); }
+ul { padding-left: 18px; margin: 0; }
+li { margin: 3px 0; }
 
-ul { padding-left: 1.2rem; }
-li { margin: 4px 0; }
-
-/* The one thing to press. */
 .button {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 6px;
-  padding: 12px 22px;
+  display: inline-block;
+  margin-top: 4px;
+  padding: 9px 18px;
   border-radius: 999px;
   background: linear-gradient(180deg, #ffe39a 0%, #ffc95c 100%);
   color: #1b1838;
   font-weight: 700;
+  font-size: 14px;
   text-decoration: none;
-  box-shadow: 0 4px 22px rgba(255, 215, 120, 0.35);
-}
-
-.pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 3px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 215, 120, 0.8);
-  background: rgba(255, 215, 120, 0.14);
-  color: var(--gold);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  vertical-align: middle;
-}
-
-hr {
-  border: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--hairline), transparent);
-  margin: 56px 0 8px;
 }
 
 footer {
-  margin-top: 48px;
-  text-align: center;
-  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 28px;
+  font-size: 13px;
   color: var(--muted);
 }
 
-footer img { width: 120px; opacity: 0.9; display: block; margin: 0 auto 8px; }
+footer img { width: 44px; height: auto; }
 
-@media (max-width: 520px) {
-  .card.with-art { padding-right: 20px; padding-bottom: 104px; }
-  .card .art { width: 104px; }
-  .moon { top: 84px; width: 48px; height: 48px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero .pet { animation: none; }
-  html { scroll-behavior: auto; }
+@media (min-width: 700px) {
+  body { font-size: 16px; }
+  .hero { padding: 26px 28px 0; min-height: 190px; }
+  .hero h1 { font-size: 34px; }
+  .hero p { font-size: 16px; }
+  .hero .pet { width: 180px; }
+  .hero .clouds { width: 290px; height: 70px; }
+  .hero .moon { right: 210px; width: 34px; height: 34px; }
 }
