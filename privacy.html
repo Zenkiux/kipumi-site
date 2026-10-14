@@ -30,7 +30,7 @@
 </header>
 
 <div class="card gold">
-  <p><strong>In short:</strong> everything you give Kipumi stays on your iPhone. There is no account and no Kipumi server. Kipumi does not sell data, show ads or track you. Two small things leave the phone, both anonymous: usage counts, which you can switch off, and crash reports.</p>
+  <p><strong>In short:</strong> everything you give Kipumi stays on your iPhone. There is no account and no Kipumi server. Kipumi does not sell data, show ads or track you. Only if you say yes, two anonymous things leave the phone: usage counts and crash reports. Each can be switched off in Settings.</p>
 </div>
 
 
@@ -42,9 +42,9 @@
 <div class="section-title">Microphone and speech</div><div class="card"><p>When you tap the microphone, what you say is turned into text and used exactly like typed text. No recording is kept. For most languages Apple’s speech recognition does this, on your device where the language allows it and otherwise by Apple. For Lithuanian, Kipumi uses a speech model that runs on your phone: nothing you say leaves the device. That model is downloaded once, only if you ask for it in Settings; like any download, the server it comes from sees your device’s internet address.</p></div>
 <div class="section-title">Notifications, widgets and Siri</div><div class="card"><p>Reminders are scheduled on your phone by iOS. Widgets read a small file the app keeps on your phone. Requests made through Siri or Shortcuts are kept on the phone until the app opens and carries them out.</p></div>
 <div class="section-title">What leaves your phone</div><div class="card"><h3>Anonymous usage counts (PostHog, EU)</h3>
-<p>To learn which parts of Kipumi are used, the app sends a fixed list of events such as “a reminder was made” or “the offer was shown”, with simple numbers and flags. These never contain anything you typed or said. They carry a random identifier created on your phone, which does not identify you and is deleted when you erase everything. Your IP address is not stored. You can turn this off at any time in <strong>Settings → Share anonymous usage counts</strong>. The data is processed by PostHog in the European Union.</p>
+<p>To learn which parts of Kipumi are used, the app sends a fixed list of events such as “a reminder was made” or “the offer was shown”, with simple numbers and flags. Kipumi asks before sending any. These never contain anything you typed or said, or your reminders, tasks, notes or memories. They carry a random identifier created on your phone, which does not identify you and is deleted when you erase everything. Your IP address is not stored. You can turn this off at any time in <strong>Settings → Share anonymous usage counts</strong>. The data is processed by PostHog in the European Union.</p>
 <h3>Crash reports (Sentry, EU)</h3>
-<p>If the app crashes, a technical report is sent so the problem can be fixed. It contains the error and basic device information (model, iOS version, app version), and no personal data, screenshots or content. It is processed by Sentry in the European Union.</p>
+<p>If the app crashes, a technical report is sent so the problem can be fixed. Only if you allowed it when Kipumi asked. It contains the kind of error, where in the code it happened, and basic device information (model, iOS version, app version). Error messages are removed before sending, and there is no personal data, screenshots or content. You can turn it off any time in <strong>Settings → Send crash reports</strong>. It is processed by Sentry in the European Union.</p>
 <h3>Purchases (Apple and RevenueCat)</h3>
 <p>Kipumi Plus is bought through Apple; we never see your payment details. RevenueCat checks with Apple whether your subscription is active, using an anonymous identifier for your installation. No account or name is involved.</p></div>
 <div class="section-title">What we never do</div><div class="card"><ul>
